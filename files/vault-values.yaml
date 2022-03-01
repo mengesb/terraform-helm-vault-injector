@@ -1,0 +1,52 @@
+global:
+  enabled: true
+server:
+  enabled: false
+injector:
+  enabled: true
+  metrics:
+    enabled: false
+
+  externalVaultAddr: "${vault_addr}"
+
+  image:
+    repository: "${image_repository}"
+    tag: "${image_tag}"
+    
+  agentImage:
+    repository: "${agent_image_repository}"
+    tag: "${agent_image_tag}"
+
+  authPath: "auth/${vault_mount}"
+
+  logLevel: "${log_level}"
+
+  logFormat: "${log_format}"
+
+  revokeOnShutdown: ${revoke_on_shutdown}
+
+  resources: {}
+
+  extraEnvironmentVars: {}
+  affinity: null
+
+  %{~ if tolerations != null }
+  tolerations: |
+    %{~ for toleration in tolerations }
+    - key: "${toleration.key}"
+      operator: %{ if toleration.value != null }Equal%{ else }Exists%{ endif }
+      %{~ if toleration.value != null }
+      value: "${toleration.value}"
+      %{~ endif }
+      effect: "${toleration.effect}"
+    %{~ endfor }
+  %{~ endif }
+
+  %{~ if node_selectors != null }
+  nodeSelector: |
+    %{~ for key, value in node_selectors }
+    ${key}: "${value}"
+    %{~ endfor }
+  %{~ endif }
+
+  priorityClassName: ${priority_class_name}
