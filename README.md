@@ -1,2 +1,2 @@
-# terraform-helm-vault-injector
-Terraform module to deploy HashiCorp Vault Agent Injector via Helm
+<!--- BEGIN_TF_DOCS --->
+<!--- END_TF_DOCS --->
