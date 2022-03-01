@@ -42,7 +42,7 @@ Default: `"vault"`
 
 ### agent\_image\_tag
 
-Description: Vault Agent Docker image tag. Versions can be found here: https://github.com/hashicorp/vault
+Description: Vault Agent Docker image tag. Versions can be found [here](https://github.com/hashicorp/vault)
 
 Type: `string`
 
@@ -58,7 +58,7 @@ Default: `"vault"`
 
 ### chart\_version
 
-Description: Helm chart version. Versions can be found here: https://github.com/hashicorp/vault-helm
+Description: Helm chart version. Versions can be found [here](https://github.com/hashicorp/vault-helm)
 
 Type: `string`
 
@@ -74,7 +74,7 @@ Default: `"hashicorp/vault-k8s"`
 
 ### image\_tag
 
-Description: Vault + Kubernetes image tag. Versions can be found here: https://github.com/hashicorp/vault-k8s
+Description: Vault + Kubernetes image tag. Versions can be found [here](https://github.com/hashicorp/vault-k8s)
 
 Type: `string`
 

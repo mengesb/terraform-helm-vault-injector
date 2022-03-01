@@ -52,7 +52,7 @@ variable "chart" {
 variable "chart_version" {
   sensitive   = false
   type        = string
-  description = "Helm chart version. Versions can be found here: https://github.com/hashicorp/vault-helm"
+  description = "Helm chart version. Versions can be found [here](https://github.com/hashicorp/vault-helm)"
   default     = "0.19.0"
 
   validation {
@@ -109,7 +109,7 @@ variable "image_repository" {
 variable "image_tag" {
   sensitive   = false
   type        = string
-  description = "Vault + Kubernetes image tag. Versions can be found here: https://github.com/hashicorp/vault-k8s"
+  description = "Vault + Kubernetes image tag. Versions can be found [here](https://github.com/hashicorp/vault-k8s)"
   default     = "0.14.2"
 
   validation {
@@ -128,7 +128,7 @@ variable "agent_image_repository" {
 variable "agent_image_tag" {
   sensitive   = false
   type        = string
-  description = "Vault Agent Docker image tag. Versions can be found here: https://github.com/hashicorp/vault"
+  description = "Vault Agent Docker image tag. Versions can be found [here](https://github.com/hashicorp/vault)"
   default     = "1.9.3"
 
   validation {
@@ -214,17 +214,17 @@ variable "priority_class_name" {
   }
 
   validation {
-    condition     = can(regex("^[a-z0-9-]+$", var.priority_class_name))
+    condition     = var.priority_class_name == "" ? true : can(regex("^[a-z0-9-]+$", var.priority_class_name))
     error_message = "Priority class name must contain only lowercase alphanumeric characters or '-'."
   }
 
   validation {
-    condition     = can(regex("^[a-z0-9]", var.priority_class_name))
+    condition     = var.priority_class_name == "" ? true : can(regex("^[a-z0-9]", var.priority_class_name))
     error_message = "Priority class name must start with an alphanumeric character."
   }
 
   validation {
-    condition     = can(regex("[a-z0-9]$", var.priority_class_name))
+    condition     = var.priority_class_name == "" ? true : can(regex("[a-z0-9]$", var.priority_class_name))
     error_message = "Priority class name must end with an alphanumeric character."
   }
 }
